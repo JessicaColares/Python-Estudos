@@ -32,11 +32,11 @@ nome = input("Qual é o seu nome? \n")
 
 print(f"{nome}, você está numa ilha, tudo o que sabe é que existe um tesouro numa caverna ao norte desta ilha. Você como bom pirata, não vai negar um bom tesouro e procura a caverna. Você encontra a caverna e entra nela.")
 
-escolha1 = input(print("Logo no começo da caverna existem dois caminhos para seguir, deseja ir para a direita ou para a esquerda? Digite direita ou esquerda: \n")).lower()
+escolha1 = input("Logo no começo da caverna existem dois caminhos para seguir, deseja ir para a direita ou para a esquerda? Digite direita ou esquerda: \n").lower()
 if escolha1 == "esquerda":
-    escolha2 = input(print("Você encontra um belo lago, azul claro iluminado por uma fenda na caverna. \n Você se sente um pouco cansado ou cansada por ter caminhado pela ilha, gostaria de dar uma pausa para descansar ou quer nadar no lago azul? Digite pausa ou nadar: \n")).lower()    
+    escolha2 = input("Você encontra um belo lago, azul claro iluminado por uma fenda na caverna. \n Você se sente um pouco cansado ou cansada por ter caminhado pela ilha, gostaria de dar uma pausa para descansar ou quer nadar no lago azul? Digite pausa ou nadar: \n").lower()    
     if escolha2 == "pausa":
-        escolha3 = input(print("Você decide sentar um pouco para repor as energias, de longe vem surgindo um espírito de um barqueiro com sua gôndola, ele atraca na margem do lago azul e te dá uma carona até o outro lado do lago.\nDepois de caminhar um pouco você encontra 3 portas, cada uma com cores diferentes. Uma porta na cor vermelho, uma amarelo e uma azul, qual das portas você deseja entrar? Digite vermelho, amarelo ou azul: \n")).lower()          
+        escolha3 = input("Você decide sentar um pouco para repor as energias, de longe vem surgindo um espírito de um barqueiro com sua gôndola, ele atraca na margem do lago azul e te dá uma carona até o outro lado do lago.\nDepois de caminhar um pouco você encontra 3 portas, cada uma com cores diferentes. Uma porta na cor vermelho, uma amarelo e uma azul, qual das portas você deseja entrar? Digite vermelho, amarelo ou azul: \n").lower()          
         if escolha3 == "vermelho":
             print(f"{nome}, assim que você pisa dentro da sala uma armadilha é acionada e toda a sala é envolvida pelas chamas, você morreu!")
         elif escolha3 == "azul":
@@ -50,4 +50,4 @@ if escolha1 == "esquerda":
 else:
   print(f"{nome} caiu num buraco, você morreu!")
 
-input(print("\nChegamos ao fim, aperte qualquer botão para sair :)"))
+input("\nChegamos ao fim, aperte qualquer botão para sair :)")
