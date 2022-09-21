@@ -48,5 +48,5 @@ if escolha1 == "esquerda":
     else:
         print(f"{nome}, decide nadar no belo lago azul, mas aparece uma tilápia gigante! A tilápia gigante comeu você, você morreu! ")
 else:
-  print(f"{nome}, caiu num buraco, você morreu!")
+  print(f"{nome} caiu num buraco, você morreu!")
 
