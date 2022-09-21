@@ -50,3 +50,4 @@ if escolha1 == "esquerda":
 else:
   print(f"{nome} caiu num buraco, você morreu!")
 
+input(print("\nChegamos ao fim, aperte qualquer botão para sair :)"))
