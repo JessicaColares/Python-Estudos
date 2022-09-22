@@ -49,11 +49,15 @@ print('''
 ''')
 print(f"{nome}, você está numa ilha, tudo o que sabe é que existe um tesouro numa caverna ao norte desta ilha. Você como bom pirata, não vai negar um bom tesouro e procura a caverna. Você encontra a caverna e entra nela.")
 
-escolha1 = input("Logo no começo da caverna existem dois caminhos para seguir, deseja ir para a direita ou para a esquerda? Digite direita ou esquerda: \n").lower()
-if escolha1 == "esquerda":
-    escolha2 = input("Você encontra um belo lago, azul claro iluminado por uma fenda na caverna. \n Você se sente um pouco cansado ou cansada por ter caminhado pela ilha, gostaria de dar uma pausa para descansar ou quer nadar no lago azul? Digite pausa ou nadar: \n").lower()    
-    if escolha2 == "pausa":
-        print('''
+ContinuarJogando = True
+tentativa = 0
+
+while ContinuarJogando & (tentativa < 10):
+    escolha1 = input("Logo no começo da caverna existem dois caminhos para seguir, deseja ir para a direita ou para a esquerda? Digite direita ou esquerda: \n").lower()
+    if escolha1 == "esquerda":
+        escolha2 = input("Você encontra um belo lago, azul claro iluminado por uma fenda na caverna. \n Você se sente um pouco cansado ou cansada por ter caminhado pela ilha, gostaria de dar uma pausa para descansar ou quer nadar no lago azul? Digite pausa ou nadar: \n").lower()    
+        if escolha2 == "pausa":
+            print('''
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣷⣟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -92,9 +96,9 @@ if escolha1 == "esquerda":
 ⠀⠀⠀⠀⠀⠀⠀⠀⠸⠿⠖⠀⠀⠀⠀⠀⠀⠈⠉⠓⠶⣤⣀⣀⣉⣳⣶⣶⡾⠿⢿⣶⣶⣶⣤⣤⡴⠶⠶⠖⠒⠋⠉⣉⣽⡶⠶⣟⡉⠀⠀⠀⠀⠀⣠⡴⠞⠁⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠉⠛⠿⠿⣿⣲⢤⣀⡀⠀⠀⠀⠀⢀⣀⣀⣠⠶⠟⠋⠉⠀⠀⠀⠉⠙⠳⠶⠖⠚⠁⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠒⠛⠛⠒⠾⠟⠛⠋⠉⠉⠀⠀⠀⠀⠀⠀⠀⠐⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-        ''')
-        escolha3 = input("Você decide sentar um pouco para repor as energias, de longe vem surgindo um espírito de um barqueiro com sua gôndola, ele atraca na margem do lago azul e te dá uma carona até o outro lado do lago.\nDepois de caminhar um pouco você encontra 3 portas, cada uma com cores diferentes. Uma porta na cor vermelho, uma amarelo e uma azul, qual das portas você deseja entrar? Digite vermelho, amarelo ou azul: \n").lower()          
-        print('''
+            ''')
+            escolha3 = input("Você decide sentar um pouco para repor as energias, de longe vem surgindo um espírito de um barqueiro com sua gôndola, ele atraca na margem do lago azul e te dá uma carona até o outro lado do lago.\nDepois de caminhar um pouco você encontra 3 portas, cada uma com cores diferentes. Uma porta na cor vermelho, uma amarelo e uma azul, qual das portas você deseja entrar? Digite vermelho, amarelo ou azul: \n").lower()          
+            print('''
             __________
            |  __  __  |
            | |  ||  | |
@@ -107,9 +111,9 @@ if escolha1 == "esquerda":
            | |  ||  | |
            | |__||__| |
            |__________|
-        ''')
-        if escolha3 == "vermelho":
-            print('''
+            ''')
+            if escolha3 == "vermelho":
+                print('''
             ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⣿⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -134,10 +138,19 @@ if escolha1 == "esquerda":
 ⠀⠀⠀⠀⠀⠙⢿⣿⣿⣷⡀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⡿⠋⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠈⠛⠿⣿⣦⣀⠀⠀⠀⠀⢀⣴⠿⠛⠁⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠓⠂⠀⠈⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-            ''')
-            print(f"{nome}, assim que você pisa dentro da sala uma armadilha é acionada e toda a sala é envolvida pelas chamas, você morreu!")
-        elif escolha3 == "azul":
-            print('''
+                ''')
+                print(f"{nome}, assim que você pisa dentro da sala uma armadilha é acionada e toda a sala é envolvida pelas chamas, você morreu!")
+                print('\nDeseja continuar jogando? Digite sim para continuar ou digite nao para desistir:'
+                '\n você tem tentativas restantes:', tentativa+1,'/10\n')
+                escolha3 = input().lower()
+                if escolha3 == 'sim':
+                    tentativa = tentativa+1
+                elif escolha3 == 'nao':
+                    ContinuarJogando = False
+                else:
+                    print('digite uma resposta válida')
+            elif escolha3 == "azul":
+                print('''
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⠿⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
@@ -163,10 +176,19 @@ if escolha1 == "esquerda":
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-            ''')
-            print(f"{nome}, você entra numa sala, você vê pequenos pontos na escuridão, conforme se aproximam você persebe que são olhos. São olhos de esqueletos, eles avançam para cima de você e te acertam com suas espadas, você morreu!")
-        elif escolha3 == "amarelo":
-            print('''
+                ''')
+                print(f"{nome}, você entra numa sala, você vê pequenos pontos na escuridão, conforme se aproximam você persebe que são olhos. São olhos de esqueletos, eles avançam para cima de você e te acertam com suas espadas, você morreu!")
+                print('\nDeseja continuar jogando? Digite sim para continuar ou digite nao para desistir:'
+                '\n você tem tentativas restantes:', tentativa+1,'/10\n')
+                escolha3 = input().lower()
+                if escolha3 == 'sim':
+                    tentativa = tentativa+1
+                elif escolha3 == 'nao':
+                    ContinuarJogando = False
+                else:
+                    print('digite uma resposta válida')
+            elif escolha3 == "amarelo":
+                print('''
 *******************************************************************************
           |                   |                  |                     |
  _________|________________.=""_;=.______________|_____________________|_______
@@ -187,12 +209,23 @@ ____/______/______/______/__"=._o--._   ;o|o;     _._;o;____/______/______/____
 ____/______/______/______/______/_____"=.o|o_.--""___/______/______/______/____
 /______/______/______/______/______/______/______/______/______/______/_____ /
 *******************************************************************************
-            ''')
-            print(f"{nome}, você entra numa sala escura, mas conforme anda tochas se acendem. Estátuas de mármore adormam o lugar, no final da sala você encontrou o tesouro! E atrás da parede do tesouro tem uma passagem secreta que te leva para fora da caverna.")
+                ''')
+                print(f"{nome}, você entra numa sala escura, mas conforme anda tochas se acendem. Estátuas de mármore adormam o lugar, no final da sala você encontrou o tesouro! E atrás da parede do tesouro tem uma passagem secreta que te leva para fora da caverna.")
+                print('\n Parabéns, você encontrou o tesouro. Deseja recomeçar a aventura? Digite sim para continuar ou digite nao para sair:'
+                '\n você tem tentativas restantes:', tentativa+1,'/10\n')
+                escolha3 = input().lower()
+                if escolha3 == 'sim':
+                    tentativa = tentativa+1
+                elif escolha3 == 'nao':
+                    ContinuarJogando = False
+                    break
+                else:
+                    print('digite uma resposta válida')
+
+            else:
+                print(f"{nome}, você escolheu uma porta que não existe, você foi picado por uma cobra e morreu!")
         else:
-            print(f"{nome}, você escolheu uma porta que não existe, você foi picado por uma cobra e morreu!")
-    else:
-        print('''
+            print('''
         ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣀⣀⣤⣤⣤⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣶⡿⢛⡿⠟⠛⢉⣡⢾⣿⡶⠶⢶⣶⣶⣦⣤⣄⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣤⡤⠤⠤⣾⣿⣻⣚⣉⠀⠴⢚⣩⠔⢛⣡⠴⠚⣉⣠⠤⠶⠒⠚⠛⠛⠻⢶⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -214,10 +247,19 @@ ____/______/______/______/______/_____"=.o|o_.--""___/______/______/______/____
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠻⢿⣓⠶⣯⣗⠶⣍⣛⣷⣎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⣧⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠓⠦⣍⣉⠛⠻⠿⣿⣷⣤⣤⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠓⠲⠶⠾⢯⣽⣿⡧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-        ''')
-        print(f"{nome}, decide nadar no belo lago azul, mas aparece uma tilápia gigante! A tilápia gigante comeu você, você morreu! ")
-else:
-    print('''
+            ''')
+            print(f"{nome}, decide nadar no belo lago azul, mas aparece uma tilápia gigante! A tilápia gigante comeu você, você morreu! ")
+            print('\nDeseja continuar jogando? Digite sim para continuar ou digite nao para desistir:'
+            '\n você tem tentativas restantes:', tentativa+1,'/10\n')
+            escolha2 = input().lower()
+            if escolha2 == 'sim':
+                tentativa = tentativa+1
+            elif escolha2 == 'nao':
+                ContinuarJogando = False
+            else:
+                print('digite uma resposta válida')
+    else:
+        print('''
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠛⠛⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
@@ -233,10 +275,19 @@ else:
 ⣿⠁⠀⠀⠀⠀⠀⠈⣧⠀⠀⠀⠀⠈⠙⠻⠟⠁⠀⠀⠀⠀⣠⣿⣿⣿⣿⣿⣿⣿
 ⣿⣄⠀⠀⠀⠀⠀⣰⣿⣿⣶⣤⣀⡀⠀⠀⠀⠀⠀⣠⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿
 ⣿⣿⣷⣤⣤⣴⣾⣿⣿⣿⣿⣿⣿⣿⣷⣦⣤⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-    ''')
-    print(f"{nome} caiu num buraco, você morreu!")
+        ''')
+        print(f"{nome} caiu num buraco, você morreu!")
+        print('\nDeseja continuar jogando? Digite sim para continuar ou digite nao para desistir:'
+        '\n você tem tentativas restantes:', tentativa+1,'/10\n')
+        escolha1 = input().lower()
+        if escolha1 == 'sim':
+            tentativa = tentativa+1
+        elif escolha1 == 'nao':
+            ContinuarJogando = False
+        else:
+            print('digite uma resposta válida')
 
-print('''
+    print('''
 ⠀⠀⠀⠀⠀⠀⣀⡤⠤⠤⣄⠀⠀⠀⠀⠀⠀⠀⠀⣠⠤⠤⢤⡀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⡞⠁⠀⡠⠖⠉⡆⠀⠀⠀⠀⠀⠀⢸⠉⠲⡀⠀⠉⢦⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⢸⡄⠐⠊⠁⢀⡜⠁⠀⠀⠀⠀⠀⠀⠈⢧⡀⠈⠑⠀⢸⠀⠀⠀⠀⠀
@@ -249,6 +300,5 @@ print('''
 ⠀⠀⠀⠀⡜⢀⠎⠁⠀⠀⠈⠙⠒⠲⠤⠤⠔⠒⠋⠁⠀⠀⠈⢳⡈⢧⠀⠀⠀⠀
 ⠀⠀⠀⢸⣠⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠳⣈⡇⠀⠀⠀
 ⠀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀
-''')
+    ''')
 
-input("\nChegamos ao fim, aperte qualquer botão para sair :)")
