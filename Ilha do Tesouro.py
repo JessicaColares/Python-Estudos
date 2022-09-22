@@ -1,4 +1,4 @@
-print('''
+bau = print('''
 *******************************************************************************
           |                   |                  |                     |
  _________|________________.=""_;=.______________|_____________________|_______
@@ -216,9 +216,9 @@ ____/______/______/______/______/_____"=.o|o_.--""___/______/______/______/____
                 escolha3 = input().lower()
                 if escolha3 == 'sim':
                     tentativa = tentativa+1
+                    break
                 elif escolha3 == 'nao':
                     ContinuarJogando = False
-                    break
                 else:
                     print('digite uma resposta válida')
 
