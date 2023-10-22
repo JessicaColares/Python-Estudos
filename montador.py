@@ -52,7 +52,7 @@ def main():
         linhas = arquivoEntrada.readlines()
 
     code = []
-    data_section = False
+    dataSection = False
 
     for linhaAsm in linhas:
         linhaAsm = linhaAsm.strip().lower()
@@ -61,13 +61,13 @@ def main():
             continue
 
         if linhaAsm.startswith('.code'):
-            data_section = False
+            dataSection = False
             continue
         elif linhaAsm.startswith('.data'):
-            data_section = True
+            dataSection = True
             continue
 
-        if data_section:
+        if dataSection:
             if linhaAsm.startswith('word'):
                 valor = linhaAsm.split()[1].strip()
                 try:
@@ -75,9 +75,9 @@ def main():
                 except ValueError:
                     code.append(valor)
         else:
-            comment_index = linhaAsm.find(';')
-            if comment_index != -1:
-                linhaAsm = linhaAsm[:comment_index]
+            commentIndex = linhaAsm.find(';')
+            if commentIndex != -1:
+                linhaAsm = linhaAsm[:commentIndex]
 
             tokens = linhaAsm.split()
             instrucao = tokens[0]
