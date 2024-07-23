@@ -1,9 +1,6 @@
 import sys
 
-# Jessica de Figueredo Colares
-# matricula 22060036
-
-# Mapeamento de instrucoes e registradores
+# Mapeamento de instruções e registradores
 instrucoes = {
     'add': 0x80, 'shr': 0x90, 'shl': 0xA0, 'not': 0xB0, 'and': 0xC0, 'or': 0xD0, 'xor': 0xE0, 
     'cmp': 0xF0, 'ld': 0x00, 'st': 0x10, 'data': 0x20, 'jmpr': 0x30, 'jmp': 0x40, 'clf': 0x60,
@@ -14,7 +11,7 @@ instrucoes = {
 
 registradores = {'r0': 0x00, 'r1': 0x01, 'r2': 0x02, 'r3': 0x03}
 
-# Escrever o arquivo de saida
+# Escrever o arquivo de saída
 def output_file(memory, file):
     assert len(memory) <= 256
     header = 'v3.0 hex words addressed\n'
@@ -38,15 +35,15 @@ def read_assembly(input_file_name):
         print(f'Erro: O arquivo {input_file_name} não foi encontrado.')
         sys.exit(1)
 
-# Traduz a instrucao para codigo de máquina em hexa
+# Traduz a instrução para código de máquina em hexadecimal
 def traduzir_instrucao(instrucao):
     parts = instrucao.replace(',', ' ').split()
-    nominal = parts[0].lower()  # Aqui ajuda a ler comandos tanto em maiusculo como minusculo
+    nominal = parts[0].lower()  # Aqui ajuda a ler comandos tanto em maiúsculo como minúsculo
     
-    # Traducao da instrucao: data
+    # Tradução da instrução: data
     if nominal == 'data': 
         if len(parts) < 3:
-            raise ValueError(f'Instrucao {instrucao} invalida, faltam argumentos.')
+            raise ValueError(f'Instrução {instrucao} inválida, faltam argumentos.')
         reg = parts[1].lower()
         value = parts[2]
         if reg in registradores:
@@ -58,28 +55,29 @@ def traduzir_instrucao(instrucao):
             else:
                 return f'{instrucoes[nominal] + reg_code:02x} {int(value):02x}'
         else:
-            raise ValueError(f'Registrador invalido: {reg}')
+            raise ValueError(f'Registrador inválido: {reg}')
         
-    # Traducao das instrucoes: add, ld, st e swap
-    elif nominal in ['add', 'ld', 'st', 'swap']:
+    # Tradução das instruções: add, ld, st, swap, shr, shl, and, or, xor, cmp e not
+    elif nominal in ['add', 'ld', 'st', 'swap', 'shr', 'shl', 'and', 'or', 'xor', 'cmp', 'not']:
         if len(parts) < 3:
-            raise ValueError(f'Instrucao {instrucao} invalida, faltam argumentos.')
+            raise ValueError(f'Instrução {instrucao} inválida, faltam argumentos.')
         reg1 = parts[1].lower()
         reg2 = parts[2].lower()
         if reg1 in registradores and reg2 in registradores:
-            reg1_code = registradores[reg1] << 4
+            reg1_code = registradores[reg1]
             reg2_code = registradores[reg2]
-            combined_code = reg1_code | reg2_code
-            return f'{instrucoes[nominal] + combined_code:02x}'
+            base_instrucao = instrucoes[nominal]
+            # Montar o código da máquina, preservando a base da instrução e combinando os códigos dos registradores
+            combined_code = (reg1_code << 2) + reg2_code  # Corrigir a combinação dos registradores
+            return f'{base_instrucao + combined_code:02x}'
         else:
-            raise ValueError(f'Registradores invalidos: {reg1}, {reg2}')
+            raise ValueError(f'Registradores inválidos: {reg1}, {reg2}')
         
-    # Traducao das instrucoes: 
-    # jmp, ja, jc, je, jz, jca, jce, jcz, jae, jaz, jez, jcae, jcaz, jcez, jaez, jcaez,
+    # Tradução das instruções: jmp, ja, jc, je, jz, jca, jce, jcz, jae, jaz, jez, jcae, jcaz, jcez, jaez, jcaez
     elif nominal in ['jmp', 'ja', 'jc', 'je', 'jz', 'jca', 'jce', 'jcz', 'jae',
                      'jaz', 'jez', 'jcae', 'jcaz', 'jcez', 'jaez', 'jcaez']:
         if len(parts) < 2:
-            raise ValueError(f'Instrucao {instrucao} invalida, faltam argumentos.')
+            raise ValueError(f'Instrução {instrucao} inválida, faltam argumentos.')
         address = parts[1].lower()
         if address.startswith('0x'):
             address_value = int(address, 16)
@@ -89,25 +87,38 @@ def traduzir_instrucao(instrucao):
             address_value = int(address)
         return f'{instrucoes[nominal]:02x} {address_value:02x}'
     
-    # Traducao das instrucoes: clf e halt
+    # Tradução das instruções: clf e halt
     elif nominal in ['clf', 'halt']:
         return f'{instrucoes[nominal]:02x}'
     
-    # Traducao do restante dos comandos:
-    # shr, shl, and, or, cmp, jmpr, in data, in addr, out data, out addr, xor, not
-    elif nominal in ['shr', 'shl', 'and', 'or', 'cmp', 'jmpr', 'in data', 'in addr', 'out data', 'out addr', 'xor', 'not']:
+    # Tradução das instruções in data, in addr, out data, out addr
+    elif nominal in ['in', 'out']:
+        if len(parts) < 3:
+            raise ValueError(f'Instrução {instrucao} inválida, faltam argumentos.')
+        io_type = parts[1]
+        reg = parts[2].lower()
+        full_nominal = f'{nominal} {io_type}'
+        if full_nominal in instrucoes and reg in registradores:
+            reg_code = registradores[reg]
+            return f'{instrucoes[full_nominal] + reg_code:02x}'
+        else:
+            raise ValueError(f'Instrução ou registrador inválido: {full_nominal}, {reg}')
+
+    # Tradução da instrução jmpr
+    elif nominal == 'jmpr':
         if len(parts) < 2:
-            raise ValueError(f'Instrucao {instrucao} invalida, faltam argumentos.')
+            raise ValueError(f'Instrução {instrucao} inválida, faltam argumentos.')
         reg = parts[1].lower()
         if reg in registradores:
             reg_code = registradores[reg]
             return f'{instrucoes[nominal] + reg_code:02x}'
         else:
-            raise ValueError(f'Registrador invalido: {reg}')
+            raise ValueError(f'Registrador inválido: {reg}')
+    
     else:
-        raise ValueError(f'Instrucao desconhecida: {instrucao}')
+        raise ValueError(f'Instrução desconhecida: {instrucao}')
 
-# Funcao para montar o programa
+# Função para montar o programa
 def assembler(input_file_name, output_file_name):
     memory = ['00' for _ in range(256)]
     code = read_assembly(input_file_name)
@@ -120,7 +131,7 @@ def assembler(input_file_name, output_file_name):
             address += 1
     output_file(memory, output_file_name)
 
-# Verificacao dos argumentos de linha de comando
+# Verificação dos argumentos de linha de comando
 if len(sys.argv) != 3:
     print(f'Uso: python {sys.argv[0]} <arquivo_entrada.asm> <arquivo_saida.m>')
     sys.exit(1)
